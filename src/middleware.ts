@@ -16,7 +16,7 @@ export async function middleware(request: NextRequest) {
 
   if (!process.env.PASSWORD) {
     // 如果没有设置密码，重定向到警告页面
-    const warningUrl = new URL('/warning', request.url);
+    const warningUrl = new URL('/warning', 'https://tv.mahuaze.com');
     return NextResponse.redirect(warningUrl);
   }
 
@@ -108,7 +108,7 @@ function handleAuthFailure(
   }
 
   // 否则重定向到登录页面
-  const loginUrl = new URL('/login', request.url);
+  const loginUrl = new URL('/login', 'https://tv.mahuaze.com');
   // 保留完整的URL，包括查询参数
   const fullUrl = `${pathname}${request.nextUrl.search}`;
   loginUrl.searchParams.set('redirect', fullUrl);
